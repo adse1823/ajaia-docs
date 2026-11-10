@@ -10,8 +10,8 @@ A lightweight collaborative document editor built as a take-home assignment for 
 
 | Layer | Choice | Why |
 |---|---|---|
-| Framework | Next.js 14 (App Router) | Full stack in one repo. API routes colocate with UI. Vercel/Railway deploy in one command. |
-| Rich Text Editor | TipTap | Best-in-class React rich text library. StarterKit gives bold, italic, headings, lists out of the box. Underline and color as separate extensions. |
+| Framework | Next.js 16 (App Router) | Full stack in one repo. API routes colocate with UI. Railway deploy in one command. |
+| Rich Text Editor | TipTap v3 | Best-in-class React rich text library. StarterKit v3 bundles bold, italic, underline, headings, and lists out of the box. |
 | Database + Auth | Supabase | Hosted Postgres + Auth + Storage in one free-tier service. Row-Level Security handles sharing logic without custom middleware. |
 | Styling | Tailwind CSS | Fast to write, no context switching to CSS files. Ships with Next.js template. |
 | Deployment | Railway | Supports Next.js with environment variables cleanly. Free tier available. |
@@ -74,6 +74,8 @@ Row-Level Security ensures:
 - Users can only read documents they own or have been shared with
 - Only owners can update or delete documents
 - Only owners can create/delete shares
+
+**Note:** The `document_shares` policy originally caused infinite recursion (`documents` policy queried `document_shares`, which queried `documents` again). Fixed by extracting ownership check into a `security definer` function (`owns_document`) that queries `documents` bypassing RLS, breaking the cycle.
 
 ---
 
