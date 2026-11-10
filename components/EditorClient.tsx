@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ChevronLeft, Share2, Save, Check, Loader2 } from 'lucide-react'
+import { ChevronLeft, Share2, Save, Check, Loader2, Download } from 'lucide-react'
 import Editor from '@/components/Editor'
 import ShareModal from '@/components/ShareModal'
 
@@ -65,6 +65,19 @@ export default function EditorClient({ id }: { id: string }) {
       body: JSON.stringify({ title: t, content: c }),
     })
     setSaveState(res.ok ? 'saved' : 'unsaved')
+  }
+
+  async function exportMarkdown() {
+    const TurndownService = (await import('turndown')).default
+    const td = new TurndownService({ headingStyle: 'atx', bulletListMarker: '-' })
+    const markdown = td.turndown(pendingRef.current.content || '<p></p>')
+    const blob = new Blob([markdown], { type: 'text/markdown' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${title.trim() || 'document'}.md`
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
   function scheduleAutoSave() {
@@ -147,6 +160,14 @@ export default function EditorClient({ id }: { id: string }) {
               ? 'Saving…'
               : 'Unsaved changes'}
           </span>
+
+          <button
+            onClick={exportMarkdown}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            Export .md
+          </button>
 
           {isOwner && (
             <button
