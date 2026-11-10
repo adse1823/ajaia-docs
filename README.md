@@ -6,7 +6,7 @@ A lightweight collaborative document editor. Create, edit, share, and import doc
 
 ## Live Demo
 
-> Deployment URL goes here after Railway deploy.
+> https://ajaia-docs-production-981391f6.up.railway.app
 
 **Test accounts (pre-seeded):**
 

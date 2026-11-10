@@ -2,28 +2,28 @@
 
 ## What is included
 
-| Item | Location |
-|---|---|
-| Source code | This repository |
-| README with setup instructions | `README.md` |
-| Architecture note | `docs/ARCHITECTURE.md` |
-| AI workflow note | `docs/AI_WORKFLOW.md` |
-| Build decision log | `docs/BUILD_STEPS.md` |
-| Live deployment URL | See below |
-| Walkthrough video | See below |
+| Item                  | Location                |
+| --------------------- | ----------------------- |
+| Source code           | This repository         |
+| README                | `README.md`             |
+| Architecture note     | `docs/ARCHITECTURE.md`  |
+| AI workflow note      | `docs/AI_WORKFLOW.md`   |
+| Build decision log    | `docs/BUILD_STEPS.md`   |
+| Live deployment URL   | See below               |
+| Walkthrough video     | See below               |
 
 ---
 
 ## Live URL
 
-> _Add Railway deployment URL here_
+<https://ajaia-docs-production-981391f6.up.railway.app>
 
 ## Test accounts
 
-| Email | Password |
-|---|---|
-| user1@ajaia.dev | password123 |
-| user2@ajaia.dev | password123 |
+| Email                   | Password      |
+| ----------------------- | ------------- |
+| `user1@example.com`     | `password123` |
+| `user2@example.com`     | `password123` |
 
 ## Walkthrough video
 
@@ -48,13 +48,13 @@
 
 ## What is incomplete / would build next
 
-| Feature | Status | Next steps |
-|---|---|---|
-| Real-time collaboration indicators | Not built | Add Supabase Realtime presence |
-| Document version history | Not built | Add `document_versions` table, diff view |
-| Export to PDF / Markdown | Not built | TipTap `getHTML()` → html2pdf or markdown-it |
-| Role-based sharing (viewer vs editor) | Schema ready, UI not exposed | Add permission toggle to ShareModal |
-| Revoke individual shares from editor | Not built | Add share list with remove buttons in ShareModal |
+| Feature                              | Status                        | Next steps                                      |
+| ------------------------------------ | ----------------------------- | ----------------------------------------------- |
+| Real-time collaboration indicators   | Not built                     | Add Supabase Realtime presence                  |
+| Document version history             | Not built                     | Add `document_versions` table, diff view        |
+| Export to PDF / Markdown             | Not built                     | TipTap `getHTML()` → html2pdf or markdown-it    |
+| Role-based sharing (viewer vs editor)| Schema ready, UI not exposed  | Add permission toggle to ShareModal             |
+| Revoke individual shares from editor | Not built                     | Add share list with remove buttons in ShareModal|
 
 ---
 
