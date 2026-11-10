@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { FileText, Plus, Upload, LogOut, Users, User } from 'lucide-react'
 import DocumentCard from '@/components/DocumentCard'
+import ShareModal from '@/components/ShareModal'
 
 type Doc = {
   id: string
@@ -28,6 +29,7 @@ export default function DashboardPage() {
   const [uploading, setUploading] = useState(false)
   const [uploadError, setUploadError] = useState('')
   const [userEmail, setUserEmail] = useState('')
+  const [sharingDoc, setSharingDoc] = useState<Doc | null>(null)
 
   useEffect(() => {
     loadDocs()
@@ -202,11 +204,20 @@ export default function DashboardPage() {
                 doc={doc}
                 isOwned={tab === 'mine'}
                 onDelete={tab === 'mine' ? () => deleteDocument(doc.id) : undefined}
+                onShare={tab === 'mine' ? () => setSharingDoc(doc) : undefined}
               />
             ))}
           </div>
         )}
       </main>
+
+      {sharingDoc && (
+        <ShareModal
+          documentId={sharingDoc.id}
+          documentTitle={sharingDoc.title}
+          onClose={() => setSharingDoc(null)}
+        />
+      )}
     </div>
   )
 }

@@ -15,9 +15,10 @@ type Props = {
   doc: Doc
   isOwned: boolean
   onDelete?: () => void
+  onShare?: () => void
 }
 
-export default function DocumentCard({ doc, isOwned, onDelete }: Props) {
+export default function DocumentCard({ doc, isOwned, onDelete, onShare }: Props) {
   const router = useRouter()
 
   const updatedAt = new Date(doc.updated_at).toLocaleDateString('en-US', {
@@ -39,12 +40,19 @@ export default function DocumentCard({ doc, isOwned, onDelete }: Props) {
               Shared
             </span>
           )}
+          {isOwned && onShare && (
+            <button
+              onClick={(e) => { e.stopPropagation(); onShare() }}
+              title="Share"
+              className="p-1.5 text-gray-400 hover:text-blue-500 rounded-lg hover:bg-blue-50 transition-colors"
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+          )}
           {isOwned && onDelete && (
             <button
-              onClick={(e) => {
-                e.stopPropagation()
-                if (confirm(`Delete "${doc.title}"?`)) onDelete()
-              }}
+              onClick={(e) => { e.stopPropagation(); if (confirm(`Delete "${doc.title}"?`)) onDelete() }}
+              title="Delete"
               className="p-1.5 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50 transition-colors"
             >
               <Trash2 className="w-4 h-4" />
