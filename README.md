@@ -6,12 +6,12 @@ A lightweight collaborative document editor. Create, edit, share, and import doc
 
 ## Live Demo
 
-> https://ajaia-docs-production-981391f6.up.railway.app
+> <https://ajaia-docs-production-981391f6.up.railway.app>
 
-**Test accounts (pre-seeded):**
+**Test accounts:**
 
-- `user1@ajaia.dev` / `password123`
-- `user2@ajaia.dev` / `password123`
+- `admin1@example.com` / `admin1`
+- `admin2@example.com` / `admin2`
 
 ---
 

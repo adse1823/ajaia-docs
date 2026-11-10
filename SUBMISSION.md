@@ -20,10 +20,10 @@
 
 ## Test accounts
 
-| Email                   | Password      |
-| ----------------------- | ------------- |
-| `user1@example.com`     | `password123` |
-| `user2@example.com`     | `password123` |
+| Email                   | Password  |
+| ----------------------- | --------- |
+| `admin1@example.com`    | `admin1`  |
+| `admin2@example.com`    | `admin2`  |
 
 ## Walkthrough video
 
